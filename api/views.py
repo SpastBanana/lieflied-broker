@@ -13,13 +13,13 @@ class TicketsView(generics.ListCreateAPIView):
     def get_queryset(self):
         return Tickets.objects.all()
     
-class TicketDelete(generics.DestroyAPIView):
+class TicketEdit(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = TicketSerializer
     permission_classes = [IsAuthenticated]
+    lookup_field = 'id'
 
     def get_queryset(self):
         return Tickets.objects.all()
-    
 
 class TicketStatsView(APIView):
     permission_classes = [IsAuthenticated]
